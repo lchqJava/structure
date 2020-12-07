@@ -1,0 +1,1 @@
+structure-mybatis-plugin-starter
