@@ -6,7 +6,7 @@
     <name>structure-mybatis-plugin-starter</name>
     <description>structure-mybatis-plugin-starter</description>
     <parent>
-        <groupId>org.structure.boot</groupId>
+        <groupId>cn.structured.boot</groupId>
         <artifactId>structure-parent</artifactId>
         <version>1.1.0.RELEASE</version>
     </parent>

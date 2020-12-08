@@ -44,7 +44,7 @@ Lombok  + Alibaba Java Coding Guidelines （阿里巴巴代码规范工具） + 
         <version>2.1.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.structure.boot</groupId>
+    
     <artifactId>demo-mybatis-plus</artifactId>
     <version>1.0.1</version>
     <name>demo-mybatis-plus</name>
@@ -63,7 +63,7 @@ Lombok  + Alibaba Java Coding Guidelines （阿里巴巴代码规范工具） + 
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.structure.boot</groupId>
+            <groupId>cn.structured.boot</groupId>
             <artifactId>structure-mybatis-plugin-starter</artifactId>
         </dependency>
         <!-- mybatis plus starter -->
@@ -96,7 +96,7 @@ Lombok  + Alibaba Java Coding Guidelines （阿里巴巴代码规范工具） + 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.structure.boot</groupId>
+                <groupId>cn.structured.boot</groupId>
                 <artifactId>structure-dependencies</artifactId>
                 <version>1.1.0.RELEASE</version>
                 <type>pom</type>
