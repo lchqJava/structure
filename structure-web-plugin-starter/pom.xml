@@ -6,7 +6,7 @@
     <name>structure-web-plugin-starter</name>
     <description>structure-web-plugin-starter</description>
     <parent>
-        <groupId>org.structure.boot</groupId>
+        <groupId>cn.structured.boot</groupId>
         <artifactId>structure-parent</artifactId>
         <version>1.1.0.RELEASE</version>
     </parent>
@@ -52,7 +52,7 @@
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.structure.boot</groupId>
+            <groupId>cn.structured.boot</groupId>
             <artifactId>structure-common</artifactId>
             <version>${parent.version}</version>
             <scope>compile</scope>
