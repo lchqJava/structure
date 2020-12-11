@@ -35,7 +35,7 @@
     <scm>
         <connection>scm:git@github.com:Codearte/gradle-nexus-staging-plugin.git</connection>
         <developerConnection>scm:git@github.com:Codearte/gradle-nexus-staging-plugin.git</developerConnection>
-        <url>https://github.com/baomidou/mybatis-plus</url>
+        <url>https://github.com/lchqJava/structur</url>
     </scm>
     <modules>
         <module>structure-dependencies</module>
