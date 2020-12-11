@@ -12,7 +12,7 @@ public class EnableSplitDateSource {
 
     @Bean
     @ConditionalOnMissingBean(SplitDateSourcePlugin.class)
-    public Interceptor getHorizontalDateSourceInterceptor() {
+    public Interceptor splitDateSourcePlugin() {
         return new SplitDateSourcePlugin();
     }
 }

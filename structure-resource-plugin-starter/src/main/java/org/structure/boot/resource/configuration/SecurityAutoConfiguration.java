@@ -13,7 +13,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.util.FileCopyUtils;
+import org.structure.boot.common.constant.AuthConstant;
 
 import java.io.IOException;
 
@@ -29,12 +32,9 @@ public class SecurityAutoConfiguration {
     @Autowired
     JwtAccessTokenConverter jwtAccessTokenConverter;
 
-    @Autowired
-    private SecurityProperties properties;
-
     @Bean
     @Qualifier("tokenStore")
-    @ConditionalOnMissingBean(JwtTokenStore.class)
+    @ConditionalOnMissingBean(TokenStore.class)
     public TokenStore tokenStore() {
         return new JwtTokenStore(jwtAccessTokenConverter);
     }
@@ -43,7 +43,7 @@ public class SecurityAutoConfiguration {
     @ConditionalOnMissingBean(JwtAccessTokenConverter.class)
     protected JwtAccessTokenConverter jwtTokenEnhancer() {
         JwtAccessTokenConverter converter =  new JwtAccessTokenConverter();
-        Resource resource = new ClassPathResource(properties.getPublicCert());
+        Resource resource = new ClassPathResource(AuthConstant.PUBLIC_CERT);
         String publicKey ;
         try {
             publicKey = new String(FileCopyUtils.copyToByteArray(resource.getInputStream()));
@@ -57,12 +57,14 @@ public class SecurityAutoConfiguration {
     }
 
     @Bean
-    public AuthExceptionEntryPoint authExceptionEntryPoint(){
+    @ConditionalOnMissingBean(AuthenticationEntryPoint.class)
+    public AuthenticationEntryPoint authenticationEntryPoint(){
         return new AuthExceptionEntryPoint();
     }
 
     @Bean
-    public CustomAccessDeniedHandler customAccessDeniedHandler(){
+    @ConditionalOnMissingBean(AccessDeniedHandler.class)
+    public AccessDeniedHandler accessDeniedHandler(){
         return new CustomAccessDeniedHandler();
     }
 }

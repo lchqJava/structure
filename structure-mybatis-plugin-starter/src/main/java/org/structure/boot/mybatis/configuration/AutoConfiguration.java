@@ -48,7 +48,7 @@ public class AutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean(PageInterceptor.class)
+    @ConditionalOnMissingBean(Interceptor.class)
     public Interceptor getPageInterceptor(){
         PageInterceptor pageInterceptor = new PageInterceptor();
         Properties p = new Properties();

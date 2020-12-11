@@ -7,6 +7,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.structure.boot.common.constant.AuthConstant;
 import org.structure.boot.common.constant.SymbolConstant;
 import org.structure.boot.common.enums.NumberEnum;
@@ -32,12 +34,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Resource
     private SecurityProperties properties;
     @Resource
-    private AuthExceptionEntryPoint authExceptionEntryPoint;
+    private AuthenticationEntryPoint authenticationEntryPoint;
     @Resource
-    private CustomAccessDeniedHandler customAccessDeniedHandler;
+    private AccessDeniedHandler accessDeniedHandler;
     @Resource
     private TokenStore tokenStore;
-
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -91,6 +92,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.resourceId(appId).stateless(true).tokenStore(tokenStore)
-                .authenticationEntryPoint(authExceptionEntryPoint).accessDeniedHandler(customAccessDeniedHandler);
+                .authenticationEntryPoint(authenticationEntryPoint).accessDeniedHandler(accessDeniedHandler);
     }
 }
